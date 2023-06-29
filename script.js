@@ -4,6 +4,7 @@ let audioElement=new Audio('5.mp3');
 let masterPlay=document.getElementById('masterPlay');
 let gif=document.getElementById('gif');
 let myProgressBar=document.getElementById('MyprogressBar');
+let masterSongName=document.getElementById('masterSongName');
 let songItems=Array.from(document.getElementsByClassName('songItem'));
 let songs=[
     {songName:"Let me love you ",filePath:"1.mp3",coverPath:"1.jpg"},
@@ -68,8 +69,10 @@ Array.from(doucument.getElementsByClassName('songItemPlay')).forEach((element)=>
     e.target.classList.remove('fa-play-circle');
     e.target.classList.add('fa-pause-circle');
     audioElement.src='${songIndex}.mp3';
+ masterSongName.innerText=song[songIndex].songName;
     audioElement.currentTime=0;
     audioElement.play();
+       gif.style.opacity=1;
     masterPlay.classList.remove('fa-play-circle');
     masterPlay.classList.add('fa-pause-circle');
   })
@@ -82,6 +85,7 @@ document.getElementById('next').addEventListener('click',()=>{
     songIndex +=1;
   }
   audioElement.src='${songIndex}.mp3';
+      masterSongName.innerText=song[songIndex].songName;
   audioElement.currentTime=0;
   audioElement.play();
   masterPlay.classList.remove('fa-play-circle');
@@ -95,6 +99,7 @@ document.getElementById('previous').addEventListener('click',()=>{
     songIndex -=1;
   }
   audioElement.src='${songIndex}.mp3';
+  masterSongName.innerText=song[songIndex].songName;
   audioElement.currentTime=0;
   audioElement.play();
   masterPlay.classList.remove('fa-play-circle');
